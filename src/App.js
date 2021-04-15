@@ -15,6 +15,7 @@ export default class App extends Component {
   }
 
     this.handleScroll = this.handleScroll.bind(this)
+    this.renderSwitch = this.renderSwitch.bind(this)
   }
 
   componentDidUpdate() {
@@ -71,15 +72,28 @@ export default class App extends Component {
         }
       })
 
-      console.log(this.state.probs)
-      console.log(this.state.probs.indexOf(Math.max(...this.state.probs)))
-
-
     }
 
     this.setState({body: !this.state.body})
 
 
+  }
+
+  renderSwitch(param) {
+
+    switch(param) {
+
+      case 0:
+        return <p style={{color: 'red'}}>Alemanha</p>
+      case 1:
+        return <p style={{color: 'red'}}>França</p>
+      case 2:
+        return <p style={{color: 'red'}}>Portugal</p>
+      case 3:
+        return <p style={{color: 'red'}}>Itália</p>
+      default:
+        return <p style={{color: 'red'}}>Você ainda não terminou o teste</p>
+    }
   }
 
 
@@ -202,7 +216,8 @@ export default class App extends Component {
           <p>
             Parabens, o país que mais combina com você é:
           </p>
-
+          
+            {this.renderSwitch(this.state.probs.indexOf(Math.max(...this.state.probs)))}
           
           </div>
           
