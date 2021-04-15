@@ -202,15 +202,7 @@ export default class App extends Component {
           <p>
             Parabens, o país que mais combina com você é:
           </p>
-          
-            { 
 
-            (this.state.probs.indexOf(Math.max(...this.state.probs)) === 0) && <p style={{color: 'red'}}>Alemanha</p>
-            || (this.state.probs.indexOf(Math.max(...this.state.probs)) === 1) && <p style={{color: 'blue'}}>França</p>
-            || (this.state.probs.indexOf(Math.max(...this.state.probs)) === 2) && <p style={{color: 'red'}}>Portugal</p>
-            || (this.state.probs.indexOf(Math.max(...this.state.probs)) === 3) && <p style={{color: 'green'}}>Itália</p>
-              
-            }
           
           </div>
           
