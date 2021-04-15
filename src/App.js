@@ -2,6 +2,15 @@ import { Component } from 'react'
 import './App.css';
 import {Container, Grid} from '@material-ui/core'
 
+import casaAlemanha from './casa-alemanha.jpg'
+import casaFranca from './casa-franca.jpg'
+import casaPortugal from './casa-portugal.jpg'
+import casaItalia from './casa-italia.jpg'
+
+import canole from "./canole.jfif";
+import alfajor from "./alfajor.jfif";
+import pretzel from "./pretzel.jfif";
+import bombom from "./bombom.jfif";
 
 export default class App extends Component {
 
@@ -30,6 +39,8 @@ export default class App extends Component {
   }
 
   handleScroll = (event) => {
+    
+
 
     if (event.target.dataset.initial === 'true') {
 
@@ -49,7 +60,7 @@ export default class App extends Component {
 
     if (event.target.dataset.buttonheader === 'false') {
 
-      var value = event.target.value.split(",")
+      var value = event.target.dataset.value.split(",")
 
       for (var i = 0; i < value.length; i++) {
         value[i] = parseFloat(value[i])
@@ -57,6 +68,7 @@ export default class App extends Component {
       }
 
       // value = [.1, .2, .4, .15]
+
 
       this.setState( state => {
 
@@ -72,9 +84,11 @@ export default class App extends Component {
         }
       })
 
+
     }
 
     this.setState({body: !this.state.body})
+    
 
 
   }
@@ -84,13 +98,13 @@ export default class App extends Component {
     switch(param) {
 
       case 0:
-        return <p style={{color: 'red'}}>Alemanha</p>
+        return <p style={{color: '#b3b320'}}>Alemanha</p>
       case 1:
-        return <p style={{color: 'red'}}>França</p>
+        return <p style={{color: 'blue'}}>França</p>
       case 2:
         return <p style={{color: 'red'}}>Portugal</p>
       case 3:
-        return <p style={{color: 'red'}}>Itália</p>
+        return <p style={{color: 'green'}}>Itália</p>
       default:
         return <p style={{color: 'red'}}>Você ainda não terminou o teste</p>
     }
@@ -120,28 +134,121 @@ export default class App extends Component {
       }
   ]
 
-    var casa = [
+    var image = [
 
       {
 
-        value: 'Casa na Alemanha',
-        probs: [.8, .2, .1, 0]
+        value: casaAlemanha,
+        probs: [.6, .2, .1, 0]
       },
       {
 
-        value: 'Casa na França',
-        probs: [.2, .8, .2, .6]
+        value: casaFranca,
+        probs: [.2, .6, .2, .3]
       },
       {
         
-        value: 'Casa em Portugal',
-        probs: [.05, .1, .9, .4]
+        value: casaPortugal,
+        probs: [.05, .1, .6, .4]
       },
       {
-        value: 'Casa na Itália',
-        probs: [.2, .4, .4, .9]
+        value: casaItalia,
+        probs: [.2, .4, .4, .6]
       }
     ]
+
+    var bebida = [
+
+      {
+
+        value: 'Cerveja',
+        probs: [.7, .2, .1, 0]
+      },
+      {
+
+        value: 'Chá',
+        probs: [.1, .4, .6, .3]
+      },
+      {
+        
+        value: 'Café',
+        probs: [.05, .6, .1, .4]
+      },
+      {
+        value: 'Vinho',
+        probs: [.2, .8, .4, .5]
+      }
+    ]
+
+    var filme = [
+
+      {
+
+        value: 'Terror',
+        probs: [.4, .2, .1, 0]
+      },
+      {
+
+        value: 'Comédia',
+        probs: [.1, .4, .4, .3]
+      },
+      {
+        
+        value: 'Romance',
+        probs: [.1, .4, .1, .4]
+      },
+      {
+        value: 'Ação',
+        probs: [.2, .5, .4, .5]
+      }
+    ]
+
+    var sobremesa = [
+
+      {
+
+        value: canole,
+        probs: [.2, .2, .1, .6]
+      },
+      {
+
+        value: alfajor,
+        probs: [.1, .6, .1, .2]
+      },
+      {
+        
+        value: pretzel,
+        probs: [.6, .2, .1, .2]
+      },
+      {
+        value: bombom,
+        probs: [.1, .1, .1, .1]
+      }
+    ]
+
+    var esporte = [
+
+      {
+
+        value: 'Futebol',
+        probs: [.4, .2, .1, 0]
+      },
+      {
+
+        value: 'Volei',
+        probs: [.1, .4, .4, .3]
+      },
+      {
+        
+        value: 'Escalada',
+        probs: [.1, .4, .1, .4]
+      },
+      {
+        value: 'Hipismo',
+        probs: [.2, .5, .4, .5]
+      }
+    ]
+
 
     return (
       <>
@@ -171,21 +278,20 @@ export default class App extends Component {
             Qual estação do ano você prefere?
           </p>
          </div>
-         <Container className="row justify-content-space-around container-fluid d-flex" style={{display: 'flex',
-    textAlign: 'center'}} >
+         <Container className="row justify-content-space-around container-fluid d-flex container">
          {
 
            clima.map((item, index) =>
            
-           <Grid item xs={6} lg={6} md={6}>
-            <button className='button' key={index} data-buttonHeader={false} data-initial={true} value={item.probs} onClick={this.handleScroll}>{item.value}</button>
+           <Grid className='grid' item xs={6} lg={6} md={6}>
+            <button className='button' key={index} data-buttonHeader={false} data-initial={true} data-value={item.probs} onClick={this.handleScroll}>{item.value}</button>
             </Grid>
            )
          }
          </Container>
         </header>
       </div>
-  
+
       <div className="App">
         <header className="App-header">
           
@@ -194,20 +300,112 @@ export default class App extends Component {
             Qual casa você prefere?
           </p>
           </div>
-          <Container className="row justify-content-space-around container-fluid d-flex" style={{display: 'flex',
-    textAlign: 'center'}} >
+          <Container className="row justify-content-space-around container-fluid d-flex container">
+         
+
+           {
+            image.map((item, index) =>
+            
+            <Grid item xs={6} lg={6} md={6}>
+              <button className='button button-image' key={index}   onClick={this.handleScroll}><img alt={item.value} data-value={item.probs} data-buttonHeader={false} data-initial={false} style={{width: '100%', borderRadius: '8px'}} src={item.value}></img></button>
+            </Grid>
+            )
+  }
+         
+         </Container>
+        </header>
+      </div>
+
+      <div className="App">
+        <header className="App-header">
+          
+         <div>
+         <p>
+            Qual bebida você mais gosta?
+          </p>
+         </div>
+         <Container className="row justify-content-space-around container-fluid d-flex container">
          {
 
-           casa.map((item, index) =>
+           bebida.map((item, index) =>
            
-            <Grid item xs={6} lg={6} md={6}>
-              <button className='button' key={index} data-buttonHeader={false} value={item.probs} onClick={this.handleScroll}>{item.value}</button>
+           <Grid className='grid' item xs={6} lg={6} md={6}>
+            <button className='button' key={index} data-buttonHeader={false} data-initial={true} data-value={item.probs} onClick={this.handleScroll}>{item.value}</button>
             </Grid>
            )
          }
          </Container>
         </header>
       </div>
+
+      <div className="App">
+        <header className="App-header">
+          
+         <div>
+         <p>
+            Qual filme você mais curte?
+          </p>
+         </div>
+         <Container className="row justify-content-space-around container-fluid d-flex container">
+         {
+
+           filme.map((item, index) =>
+           
+           <Grid className='grid' item xs={6} lg={6} md={6}>
+            <button className='button' key={index} data-buttonHeader={false} data-initial={true} data-value={item.probs} onClick={this.handleScroll}>{item.value}</button>
+            </Grid>
+           )
+         }
+         </Container>
+        </header>
+      </div>
+
+      <div className="App">
+        <header className="App-header">
+          
+          <div>
+          <p>
+            Qual sobremesa você prefere?
+          </p>
+          </div>
+          <Container className="row justify-content-space-around container-fluid d-flex container">
+         
+
+           {
+            sobremesa.map((item, index) =>
+            
+            <Grid item xs={6} lg={6} md={6}>
+              <button className='button button-image' key={index}   onClick={this.handleScroll}><img alt={item.value} data-value={item.probs} data-buttonHeader={false} data-initial={false} style={{width: '100%', borderRadius: '8px'}} src={item.value}></img></button>
+            </Grid>
+            )
+  }
+         
+         </Container>
+        </header>
+      </div>
+
+      <div className="App">
+        <header className="App-header">
+          
+         <div>
+         <p>
+            Qual esporte você mais curte?
+          </p>
+         </div>
+         <Container className="row justify-content-space-around container-fluid d-flex container">
+         {
+
+           esporte.map((item, index) =>
+           
+           <Grid className='grid' item xs={6} lg={6} md={6}>
+            <button className='button' key={index} data-buttonHeader={false} data-initial={true} data-value={item.probs} onClick={this.handleScroll}>{item.value}</button>
+            </Grid>
+           )
+         }
+         </Container>
+        </header>
+      </div>
+
 
       <div className="App">
         <header className="App-header">

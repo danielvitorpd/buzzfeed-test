@@ -24,6 +24,18 @@ html{
   color: #000;
 }
 
+.container {
+
+  display: flex !important;
+  text-align: center;
+
+}
+
+.grid {
+
+  padding: .5rem;
+}
+
 .App-link {
   color: #61dafb;
 }
@@ -54,5 +66,28 @@ html{
 
   transform: translate(-1.5px, 3px);
   box-shadow: none;
+}
+
+.button-image {
+
+  padding: 0px !important;
+  width: 90%;
+}
+
+@media only screen and (max-width: 960px) {
+
+  .button-image {
+
+    width: 90%;
+    margin: 0.5rem 0;
+  }
+}
+
+
+@media only screen and (max-width: 960px) {
+
+  .container {
+    flex-wrap: wrap;
+  }
 }
 
